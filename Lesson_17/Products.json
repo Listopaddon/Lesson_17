@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "Oak",
+    "Price": 42,
+    "Quantity": 40,
+    "Type": 1
+  },
+  {
+    "Name": "Oak",
+    "Price": 42,
+    "Quantity": 40,
+    "Type": 2
+  },
+  {
+    "Name": "Oak",
+    "Price": 42,
+    "Quantity": 40,
+    "Type": 0
+  }
+]
