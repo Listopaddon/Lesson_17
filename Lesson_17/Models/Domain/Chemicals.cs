@@ -2,6 +2,6 @@
 {
     public class Chemicals : Product
     {
-        public Chemicals(string name, decimal price, int quantity) : base(name, price, quantity, TypeProducts.Chemicals) { }
+        public Chemicals(int id, string name, decimal price, int quantity) : base(id, name, price, quantity, TypeProducts.Chemicals) { }
     }
 }

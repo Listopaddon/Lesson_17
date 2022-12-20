@@ -2,6 +2,6 @@
 {
     public class Wood : Product
     {
-        public Wood(string name, decimal price, int quantity) : base(name, price, quantity, TypeProducts.Wood) { }
+        public Wood(int id, string name, decimal price, int quantity) : base(id,name, price, quantity, TypeProducts.Wood) { }
     }
 }

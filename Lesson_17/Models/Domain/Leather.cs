@@ -2,6 +2,6 @@
 {
     public class Leather : Product
     {
-        public Leather(string name, decimal price, int quantity) : base(name, price, quantity, TypeProducts.Leather) { }
+        public Leather(int id,string name, decimal price, int quantity) : base(id,name, price, quantity, TypeProducts.Leather) { }
     }
 }

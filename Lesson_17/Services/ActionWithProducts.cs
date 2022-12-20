@@ -28,13 +28,25 @@ namespace Lesson_17.Services
             return inventory.products;
         }
 
-        public void ReplaceProduct(int idProduct, Product product)
+        public Product Get(int id)
         {
-            inventory.products[idProduct] = product;
+            return inventory.products.Single(x => x.Id == id);
         }
 
-        public void DeleteProduct(Product product)
+        public void ReplaceProduct(Product productNew)
         {
+            Product product = Get(productNew.Id);
+
+            product.Name = productNew.Name;
+            product.Price = productNew.Price;
+            product.Quantity = productNew.Quantity;
+            product.Type = productNew.Type;
+
+        }
+
+        public void DeleteProduct(int id)
+        {
+            Product product = Get(id);
             inventory.products.Remove(product);
         }
 

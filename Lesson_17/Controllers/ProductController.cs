@@ -1,10 +1,13 @@
-﻿using Lesson_17.Models.Domain;
+﻿
+using Lesson_17.Filters;
+using Lesson_17.Models.Domain;
 using Lesson_17.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lesson_17.Controllers
 {
     [Controller]
+    [CheckCorrectDataFilter]
     [Route("[controller]/[action]")]
     public class ProductController : Controller
     {
@@ -22,13 +25,16 @@ namespace Lesson_17.Controllers
 
 
         [HttpGet]
-        public IActionResult ReplaceProduct() => View();
+        public IActionResult ReplaceProduct(int id)
+        {
+            Product product = action.Get(id);
+            return View(product);
+        }
 
         [HttpPost]
-        public IActionResult ReplaceProduct(int idProduct, Product product)
+        public IActionResult ReplaceProduct(Product product)
         {
-
-            return EditAndRedirect(idProduct, product);
+            return EditAndRedirect(product);
         }
 
         [HttpGet]
@@ -39,25 +45,38 @@ namespace Lesson_17.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteProduct(Product product)
+        public IActionResult DeleteProduct(int id)
         {
-            action.DeleteProduct(product);
+            action.DeleteProduct(id);
             return RedirectToAction("GetAllProduct");
         }
 
-        private IActionResult EditAndRedirect(int id, Product product)
+        [HttpGet]
+        public IActionResult ViewException()
         {
+            return View();
+        }
+
+        private IActionResult EditAndRedirect(Product product)
+        {
+
             if (product != null)
             {
-                action.ReplaceProduct(id, product);
+                action.ReplaceProduct(product);
             }
             return RedirectToAction("GetAllProduct");
         }
 
         private IActionResult AddAndRedirect(Product pdto)
         {
+            if (pdto.Price <= 0)
+            {
+                return RedirectToAction("ViewException");
+            }
             action.AddProduct(pdto);
             return RedirectToAction("GetAllProduct");
         }
+
+
     }
 }

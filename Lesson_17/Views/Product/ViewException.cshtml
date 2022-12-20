@@ -1,0 +1,25 @@
+﻿@model Lesson_17.Filters.CheckCorrectDataFilter
+
+@{
+    ViewData["Title"] = "ViewException";
+}
+
+<h1>Exception</h1>
+
+<h4>Uncorect price from product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ViewException">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetAllProduct">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
